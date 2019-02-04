@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * @category  Crankycyclops
+ * @package   Crankycyclops_Newsletter
+ * @author    James Colannino
+ * @copyright Copyright (c) 2019 James Colannino
+ * @license   https://opensource.org/licenses/OSL-3.0 OSL v3
+ */
+-->
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+	<body>
+		<referenceContainer name="footer">
+			<block class="Magento\Framework\View\Element\Template" template="Crankycyclops_Newsletter::script.phtml" after="form.subscribe" />
+		</referenceContainer>
+	</body>
+</page>
+
