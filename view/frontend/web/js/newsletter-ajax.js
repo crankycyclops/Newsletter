@@ -15,7 +15,16 @@ define([
 
 	return function (config, elements) {
 
-		// TODO
+		$(elements).find('form').submit(function (e) {
+
+			if ($(this).validation('isValid')) {
+				alert('TODO: subscribe ' + $(this).find('[name="email"]').val());
+			}
+
+			// Suppress the original form submission since we're doing an AJAX
+			// request instead.
+			e.preventDefault();
+		});
 	};
 });
 

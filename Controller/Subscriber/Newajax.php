@@ -18,7 +18,7 @@ use Magento\Newsletter\Model\SubscriberFactory;
 
 // Replaces the original new suscriber action, which requires a full page reload,
 // with an AJAX version.
-class Newajax extends Magento\Newsletter\Controller\Subscriber\NewAction {
+class Newajax extends \Magento\Newsletter\Controller\Subscriber\NewAction {
 
 	/** @var \Magento\Framework\Controller\Result\JsonFactory */
 	protected $jsonResultFactory;
@@ -29,7 +29,7 @@ class Newajax extends Magento\Newsletter\Controller\Subscriber\NewAction {
 		Session $customerSession,
 		StoreManagerInterface $storeManager,
 		CustomerUrl $customerUrl,
-		CustomerAccountManagement $customerAccountManagement
+		CustomerAccountManagement $customerAccountManagement,
 		\Magento\Framework\Controller\Result\JsonFactory $jsonResultFactory
 	) {
 		parent::__construct(
