@@ -10,10 +10,17 @@
 -->
 
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+
+	<head>
+		<css src="Crankycyclops_Newsletter::css/newsletter-modal.css" />
+	</head>
+
 	<body>
 		<referenceContainer name="footer">
 			<block class="Magento\Framework\View\Element\Template" template="Crankycyclops_Newsletter::script.phtml" after="form.subscribe" />
+			<block class="Magento\Framework\View\Element\Template" template="Crankycyclops_Newsletter::dialog.phtml" />
 		</referenceContainer>
 	</body>
+
 </page>
 

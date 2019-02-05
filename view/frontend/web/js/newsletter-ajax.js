@@ -15,10 +15,32 @@ define([
 
 	return function (config, elements) {
 
+		let popup = $('#newsletter-status-modal').modal({
+			modalClass: 'newsletter-status-modal',
+			buttons: {}
+		});
+
+		$('#newsletter-status-modal .continue-shopping').on('click', function (e) {
+			popup.modal('closeModal');
+		});
+
 		$(elements).find('form').submit(function (e) {
 
 			if ($(this).validation('isValid')) {
-				alert('TODO: subscribe ' + $(this).find('[name="email"]').val());
+
+				$.post(
+					'/newsletter/subscriber/newajax',
+					{email: $(this).find('[name="email"]').val()},
+					function (response) {
+						$('#newsletter-status-modal').find('.content').text(response.message);
+						popup.modal('openModal');
+					}
+				).fail(
+					function (response) {
+						$('#newsletter-status-modal').find('.content').text('An error occurred while trying to subscribe. Please try again.');
+						popup.modal('openModal');
+					}
+				);
 			}
 
 			// Suppress the original form submission since we're doing an AJAX
