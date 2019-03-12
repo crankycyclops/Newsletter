@@ -62,6 +62,8 @@ class Newajax extends \Magento\Newsletter\Controller\Subscriber\NewAction {
 
 			try {
 
+				$success = false;
+
 				$this->validateEmailFormat($email);
 				$this->validateGuestSubscription();
 				$this->validateEmailAvailable($email);
@@ -76,9 +78,10 @@ class Newajax extends \Magento\Newsletter\Controller\Subscriber\NewAction {
 
 				$status = $this->_subscriberFactory->create()->subscribe($email);
 				if ($status == \Magento\Newsletter\Model\Subscriber::STATUS_NOT_ACTIVE) {
-					$message = __('The confirmation request has been sent.');
+					$message = __('A confirmation request has been sent to your email.');
 				} else {
 					$message = __('Thank you for your subscription.');
+					$success = true;
 				}
 			}
 
@@ -90,7 +93,7 @@ class Newajax extends \Magento\Newsletter\Controller\Subscriber\NewAction {
 				$message = __('Something went wrong with the subscription. Please try again.');
 			}
 
-			$result->setData(['message' => $message]);
+			$result->setData(['message' => $message, 'success' => $success]);
 		}
 
 		else {
