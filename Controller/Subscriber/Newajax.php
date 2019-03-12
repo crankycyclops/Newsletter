@@ -83,7 +83,7 @@ class Newajax extends \Magento\Newsletter\Controller\Subscriber\NewAction {
 			}
 
 			catch (\Magento\Framework\Exception\LocalizedException $e) {
-				$message = $e;
+				$message = $e->getMessage();
 			}
 
 			catch (\Exception $e) {
