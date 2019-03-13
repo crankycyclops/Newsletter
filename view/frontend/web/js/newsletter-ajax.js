@@ -39,6 +39,7 @@ define([
 
 			$('#newsletter-status-modal').find('.content').text(response.message);
 			this.enableSubscription();
+			$(this.elements).find('[name="email"]').val('');
 			this.popup.modal('openModal');
 		},
 
